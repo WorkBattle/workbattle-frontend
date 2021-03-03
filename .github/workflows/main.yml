@@ -1,0 +1,40 @@
+name: Build & AWS S3 Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@master
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install NPM packages
+        run: npm install
+
+      - name: Run Angular testing
+        run: npm test --watch=false --browsers=ChromeHeadless
+
+      - name: Run production build
+        run: npm run build --prod
+
+      - name: Deploy to AWS S3 Bucket
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region eu-central-1 \
+            dist/skm-rus s3://liga-rdsh
