@@ -23,8 +23,11 @@ jobs:
       - name: Install NPM packages
         run: npm install
 
+      - name: Run Lint check
+        run: npm lint
+
       - name: Run Angular testing
-        run: npm test --watch=false --browsers=ChromeHeadless
+        run: npm test --browsers=ChromeHeadless --watch=false --code-coverage
 
       - name: Run production build
         run: npm run build --prod
@@ -36,5 +39,5 @@ jobs:
         run: |
           aws s3 cp \
             --recursive \
-            --region eu-central-1 \
-            dist/skm-rus s3://liga-rdsh
+            --region eu-west-1 \
+            dist/workbattle-frontend s3://workbattle-frontend
