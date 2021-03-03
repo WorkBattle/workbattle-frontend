@@ -27,10 +27,10 @@ jobs:
         run: npm run lint
 
       - name: Run Angular testing
-        run: npm run test --browsers=ChromeHeadless --watch=false --code-coverage
+        run: npm run test-without-watch
 
       - name: Run production build
-        run: npm run build --prod
+        run: npm run build-prod
 
       - name: Deploy to AWS S3 Bucket
         env:
