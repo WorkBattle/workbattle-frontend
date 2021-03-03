@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-ng lint
-ng test --watch=false --browsers=ChromeHeadless
+npm run lint
+npm run test-without-watch
