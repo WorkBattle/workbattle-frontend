@@ -1,0 +1,35 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@master
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+      - name: Install NPM packages
+        run: npm install
+        
+      - name: Run prettier check
+        run: npm run format:check
+
+      - name: Run Lint check
+        run: npm run lint
+
+      - name: Run Angular testing
+        run: npm run test:without-watch
+
+      - name: Run production build
+        run: npm run build:prod
