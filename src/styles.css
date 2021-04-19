@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  background-color: var(--wb-background-color);
+}
+
+.wb-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-right: 48px;
+  padding-left: 48px;
+  position: relative;
+}
+
+.wb-button {
+  padding: 17px 28px;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  border: 0;
+  outline: 0;
+  color: #FFFFFF;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.wb-button--filled {
+  background-color: var(--wb-action-color);
+  box-shadow: 0 12px 40px rgba(79, 160, 250, 0.4);
+}
+
+.wb-button--transparent {
+  background-color: transparent;
+  border: solid 2px var(--wb-action-color);
+  box-shadow: none;
+  padding: 10px 20px;
+  color: var(--wb-action-color);
+}
+
+.wb-button--transparent:hover {
+  border: solid 2px var(--wb-light-action-color);
+  opacity: .7;
+}
+
+.wb-button--transparent:focus {
+  border: solid 2px var(--wb-dark-action-color);
+}
+
+.wb-button--filled:hover {
+  background-color: var(--wb-light-action-color);
+}
+
+.wb-button--filled:focus {
+  background-color: var(--wb-dark-action-color);
+}
+
+.wb-button:disabled {
+  opacity: .5;
+}
+
+:root {
+  --wb-background-color: #F3FAFF;
+  --wb-action-color: #4FA0FA;
+  --wb-light-action-color: #72B4FE;
+  --wb-dark-action-color: #3687de;
+  --wb-base-color: #001E36;
+  --wb-text-color: #64737F;
+}

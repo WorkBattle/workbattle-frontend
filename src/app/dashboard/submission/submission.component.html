@@ -1,0 +1,33 @@
+<section class="wb-cabinet-body">
+  <div class="wb-cabinet-body__contest-list">
+    <h3 class="wb-cabinet-body__contest-heading">Комментарии</h3>
+    <app-submission-comment *ngFor="let _ of [1,2,3]"></app-submission-comment>
+  </div>
+  <div class="wb-cabinet-body__about">
+    <div class="wb-cabinet-body__about-block we-submission-info">
+      <h3 class="wb-cabinet-body__about-headline">Информация</h3>
+      <div class="wb-submission-info__author">
+        <img alt="avatar"
+             class="wb-submission-info__author-avatar" src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg"/>
+        <div class="we-submission-info__author-details">
+          <p class="wb-submission-info__author-name">ArthCode</p>
+          <p class="wb-submission-info__author-description">Автор</p>
+        </div>
+      </div>
+      <h3 class="wb-cabinet-body__about-headline">Ссылка на работу</h3>
+      <a class="we-cabinet-body__about-text" href="https://arthco.de/link/to/your/repository/or/work" target="_blank">
+        https://arthco.de/link/to/your/repository/or/work
+      </a>
+      <h3 class="wb-cabinet-body__about-headline">Голосование</h3>
+      <div class="we-submission-info__voting">
+        <div class="wb-submission-info__voting-points">
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--likes">5</div>
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--dislikes">21</div>
+        </div>
+        <div class="wb-submission-info__voting-progress-bar">
+          <div class="wb-submission-info__voting-active-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
