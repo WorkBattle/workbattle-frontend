@@ -1,0 +1,272 @@
+.wb-shrink {
+  padding: 24px 64px;
+}
+
+.wb-header,
+.wb-footer {
+  width: 100%;
+  height: 94px;
+  position: relative;
+}
+
+.wb-logo {
+  color: var(--wb-base-color);
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  height: 46px;
+  line-height: 46px;
+}
+
+.wb-logo__dot {
+  color: var(--wb-action-color);
+}
+
+.wb-header__actions {
+  position: absolute;
+  right: 64px;
+  top: 24px;
+}
+
+.wb-welcome {
+  width: 100%;
+  height: 600px;
+  padding: 150px 64px 64px;
+  background-color: var(--wb-base-color);
+  box-shadow: 0 24px 64px rgba(0, 30, 54, 0.2);
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.wb-welcome__heading {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 105%;
+  color: #ffffff;
+  width: calc(100% - 500px);
+  margin-bottom: 16px;
+}
+
+.wb-welcome__text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  width: calc(100% - 650px);
+  margin-bottom: 32px;
+}
+
+.wb-welcome__image {
+  position: absolute;
+  top: 44px;
+  right: 0;
+}
+
+.wb-feature {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.wb-feature__heading {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 110%;
+  text-align: left;
+  margin-bottom: 40px;
+  color: var(--wb-base-color);
+}
+
+.wb-service {
+  width: 100%;
+  height: 148px;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  border-radius: 6px;
+  box-shadow: 0 24px 64px rgba(0, 30, 54, 0.1);
+  overflow: hidden;
+}
+
+.wb-service__logo {
+  min-width: 148px;
+  height: 148px;
+  background-color: var(--wb-action-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+.wb-service__logo--brush {
+  background-image: url("../../assets/media/landing/brush.svg");
+}
+
+.wb-service__logo--monitor {
+  background-image: url("../../assets/media/landing/monitor.svg");
+}
+
+.wb-service__logo--writing {
+  background-image: url("../../assets/media/landing/writing.svg");
+}
+
+.wb-service__logo--video {
+  background-image: url("../../assets/media/landing/entertainment.svg");
+}
+
+.wb-service__content {
+  width: calc(100% - 148px);
+  height: 148px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.wb-service__heading {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 110%;
+  text-align: left;
+  color: var(--wb-base-color);
+}
+
+.wb-service__text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--wb-text-color);
+  margin: 0;
+}
+
+.wb-footer__copyright {
+  position: absolute;
+  right: 64px;
+  top: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 46px;
+  margin: 0;
+  color: var(--wb-text-color);
+}
+
+.wb-benefit {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.wb-benefit__heading {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 110%;
+  text-align: center;
+  color: var(--wb-base-color);
+  margin-bottom: 36px;
+}
+
+.wb-benefit__content {
+  background-color: var(--wb-base-color);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  padding: 32px 40px;
+  width: 100%;
+  height: 600px;
+}
+
+.we-benefit__consumer {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 110%;
+  color: #ffffff;
+}
+
+.we-benefit__consumer-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  width: 60%;
+}
+
+.we-benefit__freelancer-image {
+  position: absolute;
+  bottom: 0;
+  left: -350px;
+}
+
+.wb-benefit__entrepreneur {
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-image: url("../../assets/media/landing/triangle.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.we-benefit__entrepreneur-image {
+  position: absolute;
+  right: -15px;
+  top: 104px;
+}
+
+.we-benefit__consumer--entrepreneur {
+  position: absolute;
+  right: 40px;
+  bottom: 94px;
+  margin: 0;
+}
+
+.we-benefit__consumer-description--entrepreneur {
+  position: absolute;
+  right: 40px;
+  bottom: 32px;
+  margin: 0;
+  width: 75%;
+  text-align: right;
+}
+
+.wb-attention-grabber {
+  width: 100%;
+  height: 328px;
+  background-color: var(--wb-base-color);
+  padding: 64px;
+  box-shadow: 0 12px 64px rgba(0, 30, 54, 0.2);
+  border-radius: 8px;
+  position: relative;
+}
+
+.wb-attention-grabber__heading {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 110%;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.wb-attention-grabber__text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  margin-bottom: 24px;
+  width: calc(100% - 550px);
+}
+
+.wb-attention-grabber__image {
+  position: absolute;
+  top: -81px;
+  right: -50px;
+}

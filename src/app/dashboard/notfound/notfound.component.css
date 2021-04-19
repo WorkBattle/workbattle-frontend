@@ -1,0 +1,6 @@
+@import "../styles/dashboard.css";
+
+.wb-button--back {
+  width: 100%;
+  margin-top: 12px;
+}

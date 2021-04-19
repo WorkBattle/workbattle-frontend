@@ -1,0 +1,39 @@
+.wb-cabinet-body {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.wb-cabinet-body__contest-list {
+  width: calc(100% - 440px);
+  margin-right: 100px;
+}
+
+.wb-cabinet-body__about {
+  width: 346px;
+}
+
+.wb-cabinet-body__contest-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.wb-cabinet-body__about-headline {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wb-cabinet-body__about-headline:not(:first-child) {
+  margin-top: 12px;
+}
+
+.wb-body-center {
+  width: 100%;
+  min-height: calc(100vh - 116px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
