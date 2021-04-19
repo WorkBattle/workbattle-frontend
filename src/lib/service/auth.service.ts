@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   clearSession(): void {
-    this.loggedIn = false;
+    this.setSession(false);
     localStorage.removeItem('loggedIn');
   }
 
