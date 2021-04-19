@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../lib/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -6,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.css'],
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login(): void {
+    this.authService.setSession(true);
+    this.router.navigate(['/main']);
+  }
 
   ngOnInit(): void {}
 }
