@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ConfigurationService} from './configuration.service';
 import {Observable} from 'rxjs';
-import {ContestResponse} from '../dto/response/ContestResponse';
+import {ContestListResponse} from '../dto/response/ContestListResponse';
 
 @Injectable()
 export class ContestService {
@@ -13,7 +13,7 @@ export class ContestService {
     this.apiUrl = `${this.config.getApiEndpoint()}/contests`;
   }
 
-  getContestList(): Observable<Array<ContestResponse>> {
-    return this.httpClient.get<Array<ContestResponse>>(this.apiUrl);
+  getContestList(): Observable<ContestListResponse> {
+    return this.httpClient.get<ContestListResponse>(this.apiUrl);
   }
 }

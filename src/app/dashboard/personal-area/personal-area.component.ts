@@ -12,8 +12,8 @@ export class PersonalAreaComponent implements OnInit {
   constructor(private contestService: ContestService) {}
 
   ngOnInit(): void {
-    this.contestService.getContestList().subscribe((contestList) => {
-      this.contestList = contestList;
+    this.contestService.getContestList().subscribe((response) => {
+      this.contestList = response.contestList;
     });
   }
 }
