@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ContestService } from '../../../lib/service/contest.service';
+import { ContestResponse } from '../../../lib/dto/response/ContestResponse';
 
 @Component({
   selector: 'app-personal-area',
@@ -6,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-area.component.css'],
 })
 export class PersonalAreaComponent implements OnInit {
-  constructor() {}
+  contestList: Array<ContestResponse> = [];
+  constructor(private contestService: ContestService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.contestService.getContestList().subscribe((contestList) => {
+      this.contestList = contestList;
+    });
+  }
 }

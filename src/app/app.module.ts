@@ -28,6 +28,7 @@ import { SubmissionComponent } from './dashboard/submission/submission.component
 import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
 import { ContestSubmissionComponent } from './dashboard/contest/submission/contest-submission.component';
 import { SubmissionCommentComponent } from './dashboard/submission/comment/submission-comment.component';
+import { ContestService } from '../lib/service/contest.service';
 
 registerLocaleData(ru);
 
@@ -64,6 +65,7 @@ export function initApp(
     PublicRouterGuard,
     PrivateRouterGuard,
     AuthService,
+    ContestService,
     ConfigurationService,
     { provide: NZ_I18N, useValue: ru_RU },
     {
