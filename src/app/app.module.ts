@@ -29,6 +29,7 @@ import { UserProfileComponent } from './dashboard/user-profile/user-profile.comp
 import { ContestSubmissionComponent } from './dashboard/contest/submission/contest-submission.component';
 import { SubmissionCommentComponent } from './dashboard/submission/comment/submission-comment.component';
 import { ContestService } from '../lib/service/contest.service';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(ru);
 
@@ -60,6 +61,7 @@ export function initApp(
     BrowserAnimationsModule,
     NzGridModule,
     NzResultModule,
+    NzIconModule,
   ],
   providers: [
     PublicRouterGuard,

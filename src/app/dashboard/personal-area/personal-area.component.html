@@ -1,6 +1,10 @@
 <section class="wb-cabinet-body">
   <div class="wb-cabinet-body__contest-list">
-    <h3 class="wb-cabinet-body__contest-heading">Контесты</h3>
+    <h3 class="wb-cabinet-body__contest-heading">
+      Контесты
+      &nbsp;
+      <i *ngIf="!contestListInit" nz-icon nzType="loading" nzTheme="outline"></i>
+    </h3>
     <app-personal-area-contest *ngFor="let contest of contestList" [contest]="contest"></app-personal-area-contest>
   </div>
   <div class="wb-cabinet-body__about">

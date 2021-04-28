@@ -9,11 +9,13 @@ import { ContestResponse } from '../../../lib/dto/response/ContestResponse';
 })
 export class PersonalAreaComponent implements OnInit {
   contestList: Array<ContestResponse> = [];
+  contestListInit = false;
   constructor(private contestService: ContestService) {}
 
   ngOnInit(): void {
     this.contestService.getContestList().subscribe((response) => {
       this.contestList = response.contestList;
+      this.contestListInit = true;
     });
   }
 }
