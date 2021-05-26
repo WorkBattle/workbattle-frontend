@@ -1,0 +1,38 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Регистрация работы" (nzOnCancel)="handleCancel()" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="submissionForm" class="login-form" (ngSubmit)="onFormSubmit()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите ссылку на репозиторий">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="repoUrl" placeholder="Ссылка на репозиторий"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите ссылку на работу">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="contentUrl" placeholder="Ссылка на работу"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item *ngIf="false">
+        <nz-form-control nzErrorTip="Выберите файл">
+          <nz-input-group>
+            <nz-upload formControlName="file"></nz-upload>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите тип работы">
+          <nz-select formControlName="contentType" nzPlaceHolder="Выберите тип контеста">
+            <nz-option nzValue="url" nzLabel="Ссылка"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">
+        Зарегистрировать работу
+      </button>
+    </form>
+  </ng-container>
+</nz-modal>
+

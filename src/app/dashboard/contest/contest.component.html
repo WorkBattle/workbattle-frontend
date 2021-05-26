@@ -1,20 +1,27 @@
 <section class="wb-cabinet-body">
   <div class="wb-cabinet-body__contest-list">
-    <h3 class="wb-cabinet-body__contest-heading">Работы</h3>
-    <app-contest-submission *ngFor="let _ of [1,2,3,4,5]"></app-contest-submission>
+    <h3 class="wb-cabinet-body__contest-heading">
+      Работы
+      &nbsp;
+      <i *ngIf="!contestInit" nz-icon nzType="loading" nzTheme="outline"></i>
+    </h3>
+    <app-contest-submission *ngFor="let submission of submissionList" [submission]="submission"></app-contest-submission>
   </div>
   <div class="wb-cabinet-body__about">
+    <button class="wb-button wb-button--filled wb-button--create-submission" (click)="onCreateSubmissionClick()">
+      Зарегистрировать работу
+    </button>
     <div class="wb-cabinet-body__about-block">
       <h3 class="wb-cabinet-body__about-headline">Описание</h3>
-      <p class="we-cabinet-body__about-text">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      <p class="we-cabinet-body__about-text" *ngIf="contest">
+        {{contest.description}}
         <br/><br/>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        {{contest.taskDescription}}
       </p>
     </div>
   </div>
 </section>
+
+<app-create-submission [isVisible]="submissionCreate"
+                       [handleCancel]="closeCreateSubmissionModal"
+                       [handleOk]="onCreateContestFormSubmit"></app-create-submission>

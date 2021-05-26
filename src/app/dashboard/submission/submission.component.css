@@ -90,7 +90,6 @@
 }
 
 .wb-submission-info__voting-active-progress-bar {
-  width: 66%;
   background-color: var(--wb-action-color);
   height: 2px;
 }

@@ -1,6 +1,6 @@
 export enum ContestTypeResponse {
-  DESIGN,
-  PROGRAMMING,
-  VIDEO,
-  WRITING
+  DESIGN = 'design',
+  PROGRAMMING = 'programming',
+  VIDEO = 'video',
+  WRITING = 'writing'
 }

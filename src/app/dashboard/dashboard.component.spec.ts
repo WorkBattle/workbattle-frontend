@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard.component';
 import { AuthService } from '../../lib/service/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {UserService} from '../../lib/service/user.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -11,7 +12,7 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [AuthService],
+      providers: [AuthService, UserService],
       declarations: [DashboardComponent],
     }).compileComponents();
   });

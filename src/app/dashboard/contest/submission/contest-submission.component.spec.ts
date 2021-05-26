@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContestSubmissionComponent } from './contest-submission.component';
 
-describe('SubmissionComponent', () => {
+describe('ContestSubmissionComponent', () => {
   let component: ContestSubmissionComponent;
   let fixture: ComponentFixture<ContestSubmissionComponent>;
 
@@ -16,9 +16,5 @@ describe('SubmissionComponent', () => {
     fixture = TestBed.createComponent(ContestSubmissionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

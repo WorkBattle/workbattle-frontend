@@ -8,7 +8,9 @@
     <app-personal-area-contest *ngFor="let contest of contestList" [contest]="contest"></app-personal-area-contest>
   </div>
   <div class="wb-cabinet-body__about">
-    <button class="wb-button wb-button--filled wb-button--create-contest">Создать контест</button>
+    <button class="wb-button wb-button--filled wb-button--create-contest" (click)="onCreateContestClick()">
+      Создать контест
+    </button>
     <div class="wb-cabinet-body__about-block">
       <h3 class="wb-cabinet-body__about-headline">Про нас</h3>
       <p class="we-cabinet-body__about-text">
@@ -23,3 +25,7 @@
     </div>
   </div>
 </section>
+
+<app-create-contest [isVisible]="createContest"
+                    [handleOk]="onCreateContestFormSubmit"
+                    [handleCancel]="closeCreateContestModal"></app-create-contest>
