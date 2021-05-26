@@ -67,9 +67,7 @@ export class LoginModalComponent implements OnInit {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
       if (formData.userName.includes('@')) {
-        this.handleOk(
-          new EmailLoginRequest(formData.email, formData.password)
-        );
+        this.handleOk(new EmailLoginRequest(formData.email, formData.password));
       } else {
         this.handleOk(
           new UsernameLoginRequest(formData.userName, formData.password)

@@ -118,12 +118,12 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RefreshInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: ErrorHandler,

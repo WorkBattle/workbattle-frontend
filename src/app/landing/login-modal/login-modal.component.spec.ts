@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginModalComponent } from './login-modal.component';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {FormBuilder} from '@angular/forms';
-import {AuthService} from '../../../lib/service/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from '../../../lib/service/auth.service';
 
 describe('LoginModalComponent', () => {
   let component: LoginModalComponent;

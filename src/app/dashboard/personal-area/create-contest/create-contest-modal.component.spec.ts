@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateContestModalComponent } from './create-contest-modal.component';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {FormBuilder} from '@angular/forms';
-import {UserService} from '../../../../lib/service/user.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder } from '@angular/forms';
+import { UserService } from '../../../../lib/service/user.service';
 
 describe('CreateContestComponent', () => {
   let component: CreateContestModalComponent;
