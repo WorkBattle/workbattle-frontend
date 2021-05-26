@@ -1,30 +1,46 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ConfigurationService} from './configuration.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ConfigurationService } from './configuration.service';
+import { Observable } from 'rxjs';
+import { TokenResponse } from '../dto/response/TokenResponse';
+import { LoginRequest } from '../dto/request/LoginRequest';
+import { RegisterRequest } from '../dto/request/RegisterRequest';
 
 @Injectable()
 export class AuthService {
   apiUrl: string;
-  loggedIn: boolean;
 
-  constructor(private httpClient: HttpClient,
-              private config: ConfigurationService) {
-    this.apiUrl = `${this.config.getApiEndpoint()}`;
-    this.loggedIn = localStorage.getItem('loggedIn') === 'true';
+  constructor(
+    private httpClient: HttpClient,
+    private config: ConfigurationService
+  ) {
+    this.apiUrl = 'auth';
   }
 
-  setSession(status: boolean): void {
-    this.loggedIn = status;
-    localStorage.setItem('loggedIn', String(status));
+  login(loginRequest: LoginRequest): Observable<TokenResponse> {
+    return this.httpClient.post<TokenResponse>(
+      `${this.config.getApiEndpoint()}/${this.apiUrl}/login`,
+      loginRequest
+    );
+  }
+
+  register(registerRequest: RegisterRequest): Observable<TokenResponse> {
+    return this.httpClient.post<TokenResponse>(
+      `${this.config.getApiEndpoint()}/${this.apiUrl}/register`,
+      registerRequest
+    );
+  }
+
+  setSession(token: string): void {
+    localStorage.setItem('token', token);
   }
 
   clearSession(): void {
-    this.setSession(false);
-    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('token');
   }
 
   isLoggedIn(): boolean {
-    return this.loggedIn;
+    return !!localStorage.getItem('token');
   }
 
   isLoggedOut(): boolean {

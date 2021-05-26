@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { SubmissionService } from '../../../lib/service/submission.service';
+import { SubmissionDetailsResponse } from '../../../lib/dto/response/SubmissionDetailsResponse';
+import ImageConstants from '../../../lib/constant/image.constant';
 
 @Component({
   selector: 'app-submission',
@@ -6,7 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./submission.component.css'],
 })
 export class SubmissionComponent implements OnInit {
-  constructor() {}
+  submissionInit: boolean;
+  submissionDetails: SubmissionDetailsResponse;
 
-  ngOnInit(): void {}
+  get imageConstants(): typeof ImageConstants {
+    return ImageConstants;
+  }
+
+  constructor(
+    private route: ActivatedRoute,
+    private submissionService: SubmissionService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.submissionService
+        .getSubmissionDetails(params.uuid)
+        .subscribe((response) => {
+          this.submissionInit = true;
+          this.submissionDetails = response;
+        });
+    });
+  }
 }

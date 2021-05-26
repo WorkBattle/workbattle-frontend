@@ -1,0 +1,54 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Создание контеста" (nzOnCancel)="handleCancel()" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="contestForm" class="login-form" (ngSubmit)="onFormSubmit()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите название">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="title" placeholder="Название"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите описание контеста">
+          <nz-input-group>
+            <textarea type="text" nz-input formControlName="description" placeholder="Описание контеста"></textarea>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите описание задания">
+          <nz-input-group>
+            <textarea type="text" nz-input formControlName="taskDescription" placeholder="Описание задания"></textarea>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите даты">
+          <nz-range-picker nzShowTime formControlName="contestStartStop"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите тип контеста">
+          <nz-select formControlName="contestType" nzPlaceHolder="Выберите тип контеста">
+            <nz-option nzValue="design" nzLabel="Дизайн"></nz-option>
+            <nz-option nzValue="programming" nzLabel="Программирование"></nz-option>
+            <nz-option nzValue="writing" nzLabel="Копирайтинг"></nz-option>
+            <nz-option nzValue="video" nzLabel="Видео и анимация"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Выберите закрытость контеста">
+          <label nz-checkbox formControlName="closed">
+            <span>
+              Закрытый контест
+            </span>
+          </label>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">
+        Создать контест
+      </button>
+    </form>
+  </ng-container>
+</nz-modal>

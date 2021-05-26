@@ -1,0 +1,31 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Авторизация" (nzOnCancel)="handleCancel()" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="registerForm" class="login-form" (ngSubmit)="onFormSubmit()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите E-Mail">
+          <nz-input-group nzPrefixIcon="mail">
+            <input type="text" nz-input formControlName="email" placeholder="E-Mail"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите имя пользователя (8-32 символов)">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName" placeholder="Имя пользователя"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Введите пароль (8-24 символов)">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Пароль"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">
+        Зарегистрироваться
+      </button>
+      Есть аккаунт? <a (click)="onModalRedirect(landingModalState.LOGIN)"> Войдите! </a>
+    </form>
+  </ng-container>
+</nz-modal>

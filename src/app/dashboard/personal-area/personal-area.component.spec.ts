@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PersonalAreaComponent } from './personal-area.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ContestService } from '../../../lib/service/contest.service';
 
 describe('PersonalAreaComponent', () => {
   let component: PersonalAreaComponent;
@@ -8,6 +10,8 @@ describe('PersonalAreaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [ContestService],
       declarations: [PersonalAreaComponent],
     }).compileComponents();
   });

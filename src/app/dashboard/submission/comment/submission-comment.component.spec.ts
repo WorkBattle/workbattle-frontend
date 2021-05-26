@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubmissionCommentComponent } from './submission-comment.component';
+import { MockConstant } from '../../../../lib/constant/mock.constant';
 
 describe('CommentComponent', () => {
   let component: SubmissionCommentComponent;
@@ -15,6 +16,7 @@ describe('CommentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SubmissionCommentComponent);
     component = fixture.componentInstance;
+    component.comment = MockConstant.commentList[0];
     fixture.detectChanges();
   });
 

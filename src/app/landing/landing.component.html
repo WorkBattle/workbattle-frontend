@@ -4,7 +4,7 @@
       WorkBattle<span class="wb-logo__dot">.</span>
     </div>
     <div class="wb-header__actions">
-      <button class="wb-button wb-button--transparent" (click)="login()">
+      <button class="wb-button wb-button--transparent" (click)="setModalState(landingModalState.LOGIN)">
         Войти в аккаунт
       </button>
     </div>
@@ -17,7 +17,7 @@
           Нужен сайт, логотип, текст или же видеоролик на заказ,
           но не уверены в выборе исполнителя? Пусть делают все сразу!
         </p>
-        <button class="wb-button wb-button--filled">
+        <button class="wb-button wb-button--filled" (click)="setModalState(landingModalState.REGISTER)">
           Зарегистрироваться
         </button>
       </div>
@@ -103,7 +103,7 @@
         Задача организации, в особенности же постоянное
         информационно-пропагандистское обеспечение нашей деятельности требуют!
       </p>
-      <button class="wb-button wb-button--filled">
+      <button class="wb-button wb-button--filled" (click)="setModalState(landingModalState.REGISTER)">
         Зарегистрироваться
       </button>
       <img class="wb-attention-grabber__image" alt="cup" src="assets/media/landing/attention-cup.svg"/>
@@ -118,3 +118,13 @@
     </p>
   </footer>
 </div>
+
+<app-login-modal [isVisible]="currentModal === landingModalState.LOGIN"
+                 [setModalState]="setModalState"
+                 [handleOk]="onLoginFormSubmit"
+                 [handleCancel]="onModalClose"></app-login-modal>
+
+<app-register-modal [isVisible]="currentModal === landingModalState.REGISTER"
+                 [setModalState]="setModalState"
+                 [handleOk]="onRegisterFormSubmit"
+                 [handleCancel]="onModalClose"></app-register-modal>

@@ -1,4 +1,4 @@
 export enum ContentTypeResponse {
-  URL,
-  FILE
+  URL = 'url',
+  FILE = 'file'
 }

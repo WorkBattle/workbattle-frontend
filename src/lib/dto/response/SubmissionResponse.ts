@@ -7,5 +7,6 @@ export class SubmissionResponse {
   contentUrl: string | null;
   fileUrl: string | null;
   repoUrl: string | null;
-  author: UserResponse;
+  user: UserResponse;
+  likes: number;
 }

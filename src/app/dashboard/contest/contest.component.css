@@ -1,1 +1,6 @@
 @import "../styles/dashboard.css";
+
+.wb-button--create-submission {
+  width: 100%;
+  margin-bottom: 24px;
+}

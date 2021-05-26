@@ -1,13 +1,13 @@
-<div class="wb-container">
+<div class="wb-container" *ngIf="userInfo">
   <header class="wb-cabinet-header">
     <div class="wb-cabinet-header__logo" [routerLink]="['/main']">
       WorkBattle
     </div>
     <div class="wb-cabinet-header__user">
-      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg"
+      <img [src]="userInfo.avatar || imageConstants.DEFAULT_AVATAR"
            alt="avatar" class="wb-cabinet-header__user-avatar"/>
       <p class="wb-cabinet-header__user-name">
-        ArthCode
+        {{userInfo.username}}
       </p>
       <img class="wb-cabinet-header__user-logout" (click)="logout()"
            src="assets/media/dashboard/logout.svg" alt="logout" />

@@ -1,11 +1,12 @@
 import {UserResponse} from '../dto/response/UserResponse';
 import {ContestResponse} from '../dto/response/ContestResponse';
-import {SubmissionResponse} from '../dto/response/SubmissionResponse';
+import {SubmissionDetailsResponse} from '../dto/response/SubmissionDetailsResponse';
 import {CommentResponse} from '../dto/response/CommentResponse';
 import {AttachmentResponse} from '../dto/response/AttachmentResponse';
 import {TransactionResponse} from '../dto/response/TransactionResponse';
 import {ContestTypeResponse} from '../dto/response/ContestTypeResponse';
 import {ContentTypeResponse} from '../dto/response/ContentTypeResponse';
+import {SubmissionResponse} from '../dto/response/SubmissionResponse';
 
 export class MockConstant {
   static user: UserResponse = {
@@ -28,22 +29,24 @@ export class MockConstant {
     contestStop: '2021-05-02T10:20:30',
     contestType: ContestTypeResponse.DESIGN
   }];
+  static attachmentList: Array<AttachmentResponse> = [{
+    uuid: '5ced4217-8773-4e66-b96d-cba14207641d',
+    url: 'https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/5:4/w_2815,h_2252,c_limit/milk-bread.jpg'
+  }];
   static submissionList: Array<SubmissionResponse> = [{
     uuid: '3266505c-3551-4ef2-bcd1-8ec2148eb610',
     contentType: ContentTypeResponse.URL,
+    likes: 6,
     contentUrl: 'https://arthco.de',
     fileUrl: null,
     repoUrl: null,
-    author: MockConstant.user
+    user: MockConstant.user
   }];
   static commentList: Array<CommentResponse> = [{
     uuid: '64dff07c-c70c-41a9-9ed2-a242bd0101c4',
     text: 'Hello! How are you?',
-    author: MockConstant.user
-  }];
-  static attachmentList: Array<AttachmentResponse> = [{
-    uuid: '5ced4217-8773-4e66-b96d-cba14207641d',
-    url: 'https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/5:4/w_2815,h_2252,c_limit/milk-bread.jpg'
+    user: MockConstant.user,
+    attachments: MockConstant.attachmentList
   }];
   static transactionList: Array<TransactionResponse> = [{
     uuid: 'f21b8673-2f01-4fec-9811-bf4e41a9c579',
