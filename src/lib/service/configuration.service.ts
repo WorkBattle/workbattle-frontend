@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { mapTo, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -22,7 +22,7 @@ export class ConfigurationService {
 
   getApiEndpoint(): string {
     return environment.production
-      ? `${location.protocol}//${location.host}/api/v${this.getValue(
+      ? `${location.protocol}//api.${location.host}/api/v${this.getValue(
           'apiVersion'
         )}`
       : this.getValue('api');
