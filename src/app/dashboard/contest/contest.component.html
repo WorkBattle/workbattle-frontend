@@ -6,9 +6,13 @@
       <i *ngIf="!contestInit" nz-icon nzType="loading" nzTheme="outline"></i>
     </h3>
     <app-contest-submission *ngFor="let submission of submissionList" [submission]="submission"></app-contest-submission>
+    <p class="wb-cabinet-body__comments-placeholder" *ngIf="contestInit && submissionList.length === 0">
+      Работ на данный момент нет, будьте первым участником!
+    </p>
   </div>
   <div class="wb-cabinet-body__about">
-    <button class="wb-button wb-button--filled wb-button--create-submission" (click)="onCreateSubmissionClick()">
+    <button class="wb-button wb-button--filled wb-button--create-submission" *ngIf="canMakeSubmission"
+            (click)="onCreateSubmissionClick()">
       Зарегистрировать работу
     </button>
     <div class="wb-cabinet-body__about-block">
@@ -17,6 +21,10 @@
         {{contest.description}}
         <br/><br/>
         {{contest.taskDescription}}
+        <br/><br/>
+        <ng-container *ngIf="isContestOutdated">
+          <span class="wb-cabinet-body__contest-outdated">Контест завершен и работы больше не принимаются.</span>
+        </ng-container>
       </p>
     </div>
   </div>

@@ -18,6 +18,8 @@ export class ContestComponent implements OnInit {
   contestInit = false;
   submissionList: Array<SubmissionResponse> = [];
   contest: ContestResponse;
+  canMakeSubmission: boolean;
+  isContestOutdated: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -60,6 +62,7 @@ export class ContestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.canMakeSubmission = false;
     this.route.params.subscribe((params: Params) => {
       this.contestService
         .getContestDetails(params.uuid)
@@ -67,6 +70,11 @@ export class ContestComponent implements OnInit {
           this.contestInit = true;
           this.submissionList = response.submissionList;
           this.contest = response.contest;
+          this.isContestOutdated =
+            new Date() > new Date(response.contest.contestStop);
+          this.canMakeSubmission =
+            this.userService.userInfo.uuid !== response.contest.authorUuid &&
+            !this.isContestOutdated;
         });
     });
   }

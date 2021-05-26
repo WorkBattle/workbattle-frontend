@@ -4,3 +4,8 @@
   width: 100%;
   margin-bottom: 24px;
 }
+
+.wb-cabinet-body__contest-outdated {
+  font-size: 16px;
+  color: var(--wb-error-color);
+}

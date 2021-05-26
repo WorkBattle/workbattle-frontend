@@ -1,4 +1,3 @@
-import {UserResponse} from './UserResponse';
 import {ContestTypeResponse} from './ContestTypeResponse';
 
 export class ContestResponse {
@@ -7,7 +6,7 @@ export class ContestResponse {
   description: string;
   taskDescription: string;
   closed: boolean;
-  author: UserResponse;
+  authorUuid: string;
   contestStart: string;
   contestStop: string;
   contestType: ContestTypeResponse;

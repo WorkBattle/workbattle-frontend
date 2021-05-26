@@ -93,3 +93,22 @@
   background-color: var(--wb-action-color);
   height: 2px;
 }
+
+.wb-cabinet-body__comments-form-input {
+  height: 46px;
+  width: calc(100% - 200px);
+  margin-right: 20px;
+  background: var(--wb-input-color);
+  border: 2px solid var(--wb-base-color);
+  border-radius: 6px;
+  outline: 0;
+  padding-left: 10px;
+}
+
+.wb-cabinet-body__comments-send {
+  width: 180px;
+}
+
+.wb-cabinet-body__comments-form {
+  margin-bottom: 12px;
+}

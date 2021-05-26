@@ -37,3 +37,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.wb-cabinet-body__text-placeholder {
+  color: var(--wb-text-color);
+  font-size: 14px;
+  margin: 0;
+  font-weight: normal;
+}

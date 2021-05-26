@@ -3,6 +3,16 @@
     <h3 class="wb-cabinet-body__contest-heading">Комментарии</h3>
     <app-submission-comment *ngFor="let comment of submissionDetails.commentsList" [comment]="comment">
     </app-submission-comment>
+    <p class="wb-cabinet-body__comments-placeholder" *ngIf="submissionDetails.commentsList.length === 0">
+      Комментариев на данный момент нет, будьте первым комментатором!
+    </p>
+    <div class="wb-cabinet-body__comments-form">
+      <input class="wb-cabinet-body__comments-form-input" type="text" #commentInput />
+      <button class="wb-button wb-button--transparent wb-cabinet-body__comments-send">Отправить</button>
+    </div>
+    <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+      <button nz-button><i nz-icon nzType="upload"></i>Выбрать фото</button>
+    </nz-upload>
   </div>
   <div class="wb-cabinet-body__about">
     <div class="wb-cabinet-body__about-block we-submission-info">
