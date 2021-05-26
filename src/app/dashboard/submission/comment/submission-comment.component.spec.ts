@@ -16,7 +16,7 @@ describe('CommentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SubmissionCommentComponent);
     component = fixture.componentInstance;
-    component.comment = MockConstant.commentList[0];
+    component.comment = MockConstant.commentsList[0];
     fixture.detectChanges();
   });
 

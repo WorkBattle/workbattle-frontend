@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SubmissionService } from '../../../lib/service/submission.service';
 import { SubmissionDetailsResponse } from '../../../lib/dto/response/SubmissionDetailsResponse';
 import ImageConstants from '../../../lib/constant/image.constant';
-import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-submission',
@@ -11,6 +11,9 @@ import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
   styleUrls: ['./submission.component.css'],
 })
 export class SubmissionComponent implements OnInit {
+  @ViewChild('noComments') noComments;
+  @ViewChild('likesProgress') likesProgress;
+  @ViewChild('authorAvatar') authorAvatar;
   submissionInit: boolean;
   submissionDetails: SubmissionDetailsResponse;
   fileList: NzUploadFile[] = [];
@@ -23,13 +26,6 @@ export class SubmissionComponent implements OnInit {
     private route: ActivatedRoute,
     private submissionService: SubmissionService
   ) {}
-
-  handleChange({ file, fileList }: NzUploadChangeParam): void {
-    const status = file.status;
-    if (status !== 'uploading') {
-      console.log(file, fileList);
-    }
-  }
 
   beforeUpload = (file: NzUploadFile): boolean => {
     this.fileList = this.fileList.concat(file);

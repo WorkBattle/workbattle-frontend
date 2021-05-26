@@ -7,6 +7,7 @@ import {TransactionResponse} from '../dto/response/TransactionResponse';
 import {ContestTypeResponse} from '../dto/response/ContestTypeResponse';
 import {ContentTypeResponse} from '../dto/response/ContentTypeResponse';
 import {SubmissionResponse} from '../dto/response/SubmissionResponse';
+import {SubmissionDetailedResponse} from '../dto/response/SubmissionDetailedResponse';
 
 export class MockConstant {
   static user: UserResponse = {
@@ -33,16 +34,18 @@ export class MockConstant {
     uuid: '5ced4217-8773-4e66-b96d-cba14207641d',
     url: 'https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/5:4/w_2815,h_2252,c_limit/milk-bread.jpg'
   }];
-  static submissionList: Array<SubmissionResponse> = [{
+  static submissionList: Array<SubmissionDetailedResponse> = [{
     uuid: '3266505c-3551-4ef2-bcd1-8ec2148eb610',
     contentType: ContentTypeResponse.URL,
     likes: 6,
     contentUrl: 'https://arthco.de',
     fileUrl: null,
-    repoUrl: null,
-    user: MockConstant.user
+    user: MockConstant.user,
+    repoUrl: 'https://arthco.de',
+    dislikes: 4,
+    liked: false
   }];
-  static commentList: Array<CommentResponse> = [{
+  static commentsList: Array<CommentResponse> = [{
     uuid: '64dff07c-c70c-41a9-9ed2-a242bd0101c4',
     text: 'Hello! How are you?',
     user: MockConstant.user,

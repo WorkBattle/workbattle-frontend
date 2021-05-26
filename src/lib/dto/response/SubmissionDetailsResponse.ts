@@ -1,20 +1,7 @@
-import {ContentTypeResponse} from './ContentTypeResponse';
-import {UserResponse} from './UserResponse';
-import {CommentResponse} from './CommentResponse';
+import { CommentResponse } from './CommentResponse';
+import { SubmissionDetailedResponse } from './SubmissionDetailedResponse';
 
 export class SubmissionDetailsResponse {
-  submission: SubmissionDetails;
+  submission: SubmissionDetailedResponse;
   commentsList: Array<CommentResponse>;
-}
-
-class SubmissionDetails {
-  uuid: string;
-  contentUrl: string | null;
-  fileUrl: string | null;
-  repoUrl: string;
-  user: UserResponse;
-  contentType: ContentTypeResponse;
-  likes: number;
-  dislikes: number;
-  liked: boolean;
 }

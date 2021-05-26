@@ -3,7 +3,8 @@
     <h3 class="wb-cabinet-body__contest-heading">Комментарии</h3>
     <app-submission-comment *ngFor="let comment of submissionDetails.commentsList" [comment]="comment">
     </app-submission-comment>
-    <p class="wb-cabinet-body__comments-placeholder" *ngIf="submissionDetails.commentsList.length === 0">
+    <p class="wb-cabinet-body__comments-placeholder" id="no-comments"
+       *ngIf="submissionDetails.commentsList.length === 0">
       Комментариев на данный момент нет, будьте первым комментатором!
     </p>
     <div class="wb-cabinet-body__comments-form">
@@ -18,8 +19,7 @@
     <div class="wb-cabinet-body__about-block we-submission-info">
       <h3 class="wb-cabinet-body__about-headline">Информация</h3>
       <div class="wb-submission-info__author">
-        <img alt="avatar"
-             class="wb-submission-info__author-avatar"
+        <img alt="avatar" class="wb-submission-info__author-avatar" id="author-avatar"
              [src]="submissionDetails.submission.user.avatar || imageConstants.DEFAULT_AVATAR"/>
         <div class="we-submission-info__author-details">
           <p class="wb-submission-info__author-name">{{submissionDetails.submission.user.username}}</p>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="wb-submission-info__voting-progress-bar">
-          <div class="wb-submission-info__voting-active-progress-bar"
+          <div class="wb-submission-info__voting-active-progress-bar" id="likes-progress"
                [style.width.%]="(submissionDetails.submission.likes * 100) /
                (submissionDetails.submission.likes + submissionDetails.submission.dislikes)">
           </div>
