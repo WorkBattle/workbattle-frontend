@@ -32,7 +32,7 @@ export class ContestComponent implements OnInit {
 
   closeCreateSubmissionModal = (): void => {
     this.setSubmissionContest(false);
-  };
+  }
 
   onCreateContestFormSubmit = (submissionFormData: any): void => {
     const submissionRequest: SubmissionRequest = {
@@ -53,7 +53,7 @@ export class ContestComponent implements OnInit {
         this.contest = response.contest;
         this.closeCreateSubmissionModal();
       });
-  };
+  }
 
   setSubmissionContest(state: boolean): void {
     this.submissionCreate = state;

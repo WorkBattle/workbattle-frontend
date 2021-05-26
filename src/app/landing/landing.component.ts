@@ -21,25 +21,25 @@ export class LandingComponent implements OnInit {
 
   setModalState = (modal: LandingModalState): void => {
     this.currentModal = modal;
-  };
+  }
 
   onModalClose = (): void => {
     this.currentModal = LandingModalState.NONE;
-  };
+  }
 
   onLoginFormSubmit = (loginFormData: LoginRequest): void => {
     this.authService.login(loginFormData).subscribe((response) => {
       this.authService.setSession(response.token);
       this.router.navigate(['/main']);
     });
-  };
+  }
 
   onRegisterFormSubmit = (registerFormData: RegisterRequest): void => {
     this.authService.register(registerFormData).subscribe((response) => {
       this.authService.setSession(response.token);
       this.router.navigate(['/main']);
     });
-  };
+  }
 
   ngOnInit(): void {}
 }

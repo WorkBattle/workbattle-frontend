@@ -22,7 +22,7 @@ export class PersonalAreaComponent implements OnInit {
 
   closeCreateContestModal = (): void => {
     this.setCreateContest(false);
-  };
+  }
 
   onCreateContestFormSubmit = (contestRequest: ContestRequest): void => {
     this.contestService
@@ -32,7 +32,7 @@ export class PersonalAreaComponent implements OnInit {
         this.contestList = response.contestList;
         this.closeCreateContestModal();
       });
-  };
+  }
 
   setCreateContest(state: boolean): void {
     this.createContest = state;
