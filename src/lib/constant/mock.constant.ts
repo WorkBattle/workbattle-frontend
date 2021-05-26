@@ -24,7 +24,7 @@ export class MockConstant {
     description: 'Нарисуй лучший логотип в 2021',
     taskDescription: 'Нужно сделать лого для заправки WOG в зелёных цветах',
     closed: false,
-    author: MockConstant.user,
+    authorUuid: MockConstant.user.uuid,
     contestStart: '2020-05-02T10:20:30',
     contestStop: '2021-05-02T10:20:30',
     contestType: ContestTypeResponse.DESIGN
