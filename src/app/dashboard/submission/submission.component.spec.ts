@@ -75,10 +75,8 @@ describe('SubmissionComponent', () => {
 
   it('should show default avatar if submission author doesn`t have one', () => {
     expect(
-      new URL(
-        fixture.debugElement.nativeElement.querySelector('#author-avatar').src
-      ).pathname.slice(1)
-    ).not.toBe(ImageConstants.DEFAULT_AVATAR);
+      fixture.debugElement.nativeElement.querySelector('#author-avatar').src
+    ).toBe(MockConstant.user.avatar);
     component.submissionDetails.submission.user.avatar = null;
     fixture.detectChanges();
     expect(
