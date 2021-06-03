@@ -3,6 +3,7 @@ import { ContestService } from '../../../lib/service/contest.service';
 import { ContestResponse } from '../../../lib/dto/response/ContestResponse';
 import { ContestRequest } from '../../../lib/dto/request/ContestRequest';
 import { mergeMap } from 'rxjs/operators';
+import { ContestTypeResponse } from '../../../lib/dto/response/ContestTypeResponse';
 
 @Component({
   selector: 'app-personal-area',
@@ -13,8 +14,18 @@ export class PersonalAreaComponent implements OnInit {
   createContest: boolean;
   contestList: Array<ContestResponse> = [];
   contestListInit = false;
+  listOfChosenContestTypes: Array<ContestTypeResponse> = [
+    ContestTypeResponse.PROGRAMMING,
+    ContestTypeResponse.DESIGN,
+    ContestTypeResponse.WRITING,
+    ContestTypeResponse.VIDEO,
+  ];
 
   constructor(private contestService: ContestService) {}
+
+  get contestTypeEnum(): typeof ContestTypeResponse {
+    return ContestTypeResponse;
+  }
 
   onCreateContestClick(): void {
     this.setCreateContest(true);

@@ -43,7 +43,8 @@ export class MockConstant {
     user: MockConstant.user,
     repoUrl: 'https://arthco.de',
     dislikes: 4,
-    liked: false
+    liked: false,
+    disliked: false
   }];
   static commentsList: Array<CommentResponse> = [{
     uuid: '64dff07c-c70c-41a9-9ed2-a242bd0101c4',
