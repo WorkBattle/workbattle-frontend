@@ -112,3 +112,7 @@
 .wb-cabinet-body__comments-form {
   margin-bottom: 12px;
 }
+
+.wb-cabinet-body__comments-max-size--exceeded {
+  color: var(--wb-error-color);
+}

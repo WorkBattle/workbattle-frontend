@@ -24,12 +24,21 @@ export class PersonalAreaComponent implements OnInit {
     this.setCreateContest(false);
   };
 
+  filterContestByActuality(
+    contestList: Array<ContestResponse>
+  ): Array<ContestResponse> {
+    return contestList.sort(
+      (a, b) =>
+        new Date(b.contestStop).getTime() - new Date(a.contestStop).getTime()
+    );
+  }
+
   onCreateContestFormSubmit = (contestRequest: ContestRequest): void => {
     this.contestService
       .createContest(contestRequest)
       .pipe(mergeMap(() => this.contestService.getContestList()))
       .subscribe((response) => {
-        this.contestList = response.contestList;
+        this.contestList = this.filterContestByActuality(response.contestList);
         this.closeCreateContestModal();
       });
   };
@@ -40,7 +49,7 @@ export class PersonalAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.contestService.getContestList().subscribe((response) => {
-      this.contestList = response.contestList;
+      this.contestList = this.filterContestByActuality(response.contestList);
       this.contestListInit = true;
     });
   }

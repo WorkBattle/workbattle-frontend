@@ -1,9 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SubmissionService } from '../../../lib/service/submission.service';
 import { SubmissionDetailsResponse } from '../../../lib/dto/response/SubmissionDetailsResponse';
 import ImageConstants from '../../../lib/constant/image.constant';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import FileUtil from '../../../lib/util/file.util';
+import { CommentRequest } from '../../../lib/dto/request/CommentRequest';
+import { UserService } from '../../../lib/service/user.service';
+import ConstraintConstants from '../../../lib/constant/constraint.constant';
 
 @Component({
   selector: 'app-submission',
@@ -11,12 +17,15 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
   styleUrls: ['./submission.component.css'],
 })
 export class SubmissionComponent implements OnInit {
+  @ViewChild('commentInput') commentInput;
   @ViewChild('noComments') noComments;
   @ViewChild('likesProgress') likesProgress;
   @ViewChild('authorAvatar') authorAvatar;
   submissionInit: boolean;
   submissionDetails: SubmissionDetailsResponse;
-  fileList: NzUploadFile[] = [];
+  fileList: Array<NzUploadFile> = [];
+  canPostComment = true;
+  maxSizeExceeded = false;
 
   get imageConstants(): typeof ImageConstants {
     return ImageConstants;
@@ -24,7 +33,9 @@ export class SubmissionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private submissionService: SubmissionService
+    private router: Router,
+    private submissionService: SubmissionService,
+    private userService: UserService
   ) {}
 
   beforeUpload = (file: NzUploadFile): boolean => {
@@ -32,10 +43,52 @@ export class SubmissionComponent implements OnInit {
     return false;
   };
 
+  async sendComment(comment: string): Promise<void> {
+    this.canPostComment = false;
+    if (this.getFilesSize() <= ConstraintConstants.UPLOAD_CONSTRAINT) {
+      const base64list = [];
+      for (const file of this.fileList) {
+        base64list.push(await FileUtil.toBase64(file));
+      }
+      this.submissionService
+        .postComment(
+          new CommentRequest(
+            this.submissionDetails.submission.uuid,
+            comment,
+            this.userService.userInfo.uuid,
+            base64list
+          )
+        )
+        .subscribe((commentResponse) => {
+          this.canPostComment = true;
+          this.maxSizeExceeded = false;
+          this.commentInput.nativeElement.value = '';
+          this.fileList = [];
+          this.submissionDetails.commentsList.push(commentResponse);
+        });
+    } else {
+      this.maxSizeExceeded = true;
+    }
+  }
+
+  getFilesSize(): number {
+    let filesSize = 0;
+    this.fileList.forEach((file) => {
+      filesSize += file.size;
+    });
+    return filesSize;
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.submissionService
         .getSubmissionDetails(params.uuid)
+        .pipe(
+          catchError(() => {
+            this.router.navigate(['/main/notfound']);
+            return EMPTY;
+          })
+        )
         .subscribe((response) => {
           this.submissionInit = true;
           this.submissionDetails = response;
