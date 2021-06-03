@@ -114,7 +114,7 @@ export class SubmissionComponent implements OnInit {
           });
       } else if (this.submissionDetails.submission.disliked) {
         this.submissionService
-          .putDislike({delete: true}, this.submissionDetails.submission.uuid)
+          .putDislike({ delete: true }, this.submissionDetails.submission.uuid)
           .subscribe(() => {
             this.submissionDetails.submission.dislikes -= 1;
             this.submissionDetails.submission.disliked = false;
