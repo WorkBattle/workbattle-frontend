@@ -1,0 +1,8 @@
+.wb-create-submission--error-text {
+  color: var(--wb-error-color);
+  margin: 0;
+}
+
+.wb-create-submission__button {
+  margin-bottom: 12px;
+}

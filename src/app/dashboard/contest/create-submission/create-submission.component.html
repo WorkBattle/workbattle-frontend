@@ -1,6 +1,6 @@
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Регистрация работы" (nzOnCancel)="handleCancel()" [nzFooter]="null">
   <ng-container *nzModalContent>
-    <form nz-form [formGroup]="submissionForm" class="login-form" (ngSubmit)="onFormSubmit()">
+    <form nz-form [formGroup]="submissionForm" (ngSubmit)="onFormSubmit()">
       <nz-form-item>
         <nz-form-control nzErrorTip="Введите ссылку на репозиторий">
           <nz-input-group>
@@ -8,30 +8,43 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
+      <nz-form-item *ngIf="chosenContentType === contentTypeEnum.URL">
         <nz-form-control nzErrorTip="Введите ссылку на работу">
           <nz-input-group>
             <input type="text" nz-input formControlName="contentUrl" placeholder="Ссылка на работу"/>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item *ngIf="false">
+      <nz-form-item *ngIf="chosenContentType === contentTypeEnum.FILE">
         <nz-form-control nzErrorTip="Выберите файл">
           <nz-input-group>
-            <nz-upload formControlName="file"></nz-upload>
+            <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+              <button nz-button type="button" [disabled]="fileList.length > 0">
+                <i nz-icon nzType="upload"></i>
+                Выбрать файл
+              </button>
+              <span>
+                Макс. 10 МБ
+              </span>
+            </nz-upload>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Введите тип работы">
-          <nz-select formControlName="contentType" nzPlaceHolder="Выберите тип контеста">
+          <nz-select formControlName="contentType" (ngModelChange)="onContentTypeChoose($event)"
+                     nzPlaceHolder="Выберите тип контеста">
             <nz-option nzValue="url" nzLabel="Ссылка"></nz-option>
+            <nz-option nzValue="file" nzLabel="Файл"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
-      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">
+      <button nz-button [nzType]="'primary'" type="submit" class="wb-create-submission__button">
         Зарегистрировать работу
       </button>
+      <p class="wb-create-submission--error-text" *ngIf="submissionError">
+        Заполните поле "Файл" или "Ссылка на работу", или же размер файла больше 10 МБ
+      </p>
     </form>
   </ng-container>
 </nz-modal>

@@ -1,5 +1,6 @@
 .wb-cabinet-body {
   padding-top: 24px;
+  padding-bottom: 24px;
   width: 100%;
   display: flex;
   align-items: flex-start;

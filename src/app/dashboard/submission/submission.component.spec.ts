@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MockConstant } from '../../../lib/constant/mock.constant';
 import { of } from 'rxjs';
 import ImageConstants from '../../../lib/constant/image.constant';
+import { UserService } from '../../../lib/service/user.service';
 
 describe('SubmissionComponent', () => {
   let component: SubmissionComponent;
@@ -30,6 +31,12 @@ describe('SubmissionComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             params: of({ id: MockConstant.submissionList[0].uuid }),
+          },
+        },
+        {
+          provide: UserService,
+          useValue: {
+            userInfo: MockConstant.user,
           },
         },
       ],

@@ -3,5 +3,7 @@
   <p class="wb-cabinet-contest__description">
     {{contest.description}}
   </p>
-  <p class="wb-cabinet-contest__date">{{formattedStartTime}} – {{formattedEndTime}}</p>
+  <p class="wb-cabinet-contest__date" [ngClass]="{'wb-cabinet-contest__date--outdated': isOutdated}">
+    {{formattedStartTime}} – {{formattedEndTime}}
+  </p>
 </div>

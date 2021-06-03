@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ContestService } from '../../../lib/service/contest.service';
 import { ContestResponse } from '../../../lib/dto/response/ContestResponse';
-import { mergeMap } from 'rxjs/operators';
+import { catchError, mergeMap } from 'rxjs/operators';
 import { SubmissionService } from '../../../lib/service/submission.service';
 import { SubmissionRequest } from '../../../lib/dto/request/SubmissionRequest';
 import { UserService } from '../../../lib/service/user.service';
 import { SubmissionResponse } from '../../../lib/dto/response/SubmissionResponse';
+import { EMPTY } from 'rxjs';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
+import FileUtil from '../../../lib/util/file.util';
 
 @Component({
   selector: 'app-contest',
@@ -25,7 +28,8 @@ export class ContestComponent implements OnInit {
     private route: ActivatedRoute,
     private contestService: ContestService,
     private submissionService: SubmissionService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   onCreateSubmissionClick(): void {
@@ -36,12 +40,15 @@ export class ContestComponent implements OnInit {
     this.setSubmissionContest(false);
   };
 
-  onCreateContestFormSubmit = (submissionFormData: any): void => {
+  onCreateContestFormSubmit = async (
+    submissionFormData: any,
+    fileList: Array<NzUploadFile>
+  ): Promise<void> => {
     const submissionRequest: SubmissionRequest = {
       contentType: submissionFormData.contentType,
       contentUrl: submissionFormData.contentUrl,
       repoUrl: submissionFormData.repoUrl,
-      file: submissionFormData.file,
+      file: await FileUtil.toBase64(fileList[0]),
       userUuid: this.userService.userInfo.uuid,
       contestUuid: this.contest.uuid,
     };
@@ -66,6 +73,12 @@ export class ContestComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.contestService
         .getContestDetails(params.uuid)
+        .pipe(
+          catchError(() => {
+            this.router.navigate(['/main/notfound']);
+            return EMPTY;
+          })
+        )
         .subscribe((response) => {
           this.contestInit = true;
           this.submissionList = response.submissionList;

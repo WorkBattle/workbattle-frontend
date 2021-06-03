@@ -18,3 +18,7 @@
   color: var(--wb-text-color);
   font-size: 12px;
 }
+
+.wb-cabinet-contest__date--outdated {
+  color: var(--wb-error-color);
+}

@@ -8,11 +8,19 @@
       Комментариев на данный момент нет, будьте первым комментатором!
     </p>
     <div class="wb-cabinet-body__comments-form">
-      <input class="wb-cabinet-body__comments-form-input" type="text" #commentInput />
-      <button class="wb-button wb-button--transparent wb-cabinet-body__comments-send">Отправить</button>
+      <input class="wb-cabinet-body__comments-form-input" type="text" #commentInput/>
+      <button class="wb-button wb-button--transparent wb-cabinet-body__comments-send"
+              [disabled]="!canPostComment"
+              (click)="sendComment(commentInput.value)">
+        Отправить
+      </button>
     </div>
-    <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+    <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" nzAccept="image/png, image/gif, image/jpeg">
       <button nz-button><i nz-icon nzType="upload"></i>Выбрать фото</button>
+      <span class="wb-cabinet-body__comments-max-size"
+            [ngClass]="{'wb-cabinet-body__comments-max-size--exceeded': maxSizeExceeded}">
+      Макс. 10 МБ
+      </span>
     </nz-upload>
   </div>
   <div class="wb-cabinet-body__about">
@@ -26,14 +34,22 @@
           <p class="wb-submission-info__author-description">Автор</p>
         </div>
       </div>
-      <h3 class="wb-cabinet-body__about-headline">Ссылка на репозиторий</h3>
-      <a class="we-cabinet-body__about-text" [href]="submissionDetails.submission.repoUrl" target="_blank">
-        {{submissionDetails.submission.repoUrl}}
-      </a>
+      <ng-container *ngIf="submissionDetails.submission.repoUrl">
+        <h3 class="wb-cabinet-body__about-headline">Ссылка на репозиторий</h3>
+        <a class="we-cabinet-body__about-text" [href]="submissionDetails.submission.repoUrl" target="_blank">
+          {{submissionDetails.submission.repoUrl}}
+        </a>
+      </ng-container>
       <ng-container *ngIf="submissionDetails.submission.contentUrl">
         <h3 class="wb-cabinet-body__about-headline">Ссылка на работу</h3>
         <a class="we-cabinet-body__about-text" [href]="submissionDetails.submission.contentUrl" target="_blank">
           {{submissionDetails.submission.contentUrl}}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="submissionDetails.submission.fileUrl">
+        <h3 class="wb-cabinet-body__about-headline">Ссылка на файл</h3>
+        <a class="we-cabinet-body__about-text" [href]="submissionDetails.submission.fileUrl" target="_blank">
+          Скачать файл
         </a>
       </ng-container>
       <h3 class="wb-cabinet-body__about-headline">Голосование</h3>

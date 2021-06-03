@@ -1,6 +1,6 @@
 .wb-cabinet-comment {
   width: 100%;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: rgba(100, 115, 127, 0.5) 1px solid;
 }
@@ -45,12 +45,14 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .wb-cabinet-comment__attachment {
   height: 100px;
   display: block;
   margin-right: 12px;
+  margin-bottom: 12px;
 }
 
 .wb-cabinet-comment__subtitle {

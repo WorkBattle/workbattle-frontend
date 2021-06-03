@@ -9,11 +9,13 @@ import * as moment from 'moment';
 })
 export class PersonalAreaContestComponent implements OnInit {
   @Input() contest: ContestResponse;
+  isOutdated: boolean;
   formattedStartTime: string;
   formattedEndTime: string;
   constructor() {}
 
   ngOnInit(): void {
+    this.isOutdated = new Date() > new Date(this.contest.contestStop);
     this.formattedStartTime = moment(this.contest.contestStart).format(
       'MMMM Do YYYY'
     );

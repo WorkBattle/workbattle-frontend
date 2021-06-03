@@ -4,6 +4,8 @@ import {ConfigurationService} from './configuration.service';
 import {Observable} from 'rxjs';
 import {SubmissionDetailsResponse} from '../dto/response/SubmissionDetailsResponse';
 import {SubmissionRequest} from '../dto/request/SubmissionRequest';
+import {CommentResponse} from '../dto/response/CommentResponse';
+import {CommentRequest} from '../dto/request/CommentRequest';
 
 @Injectable()
 export class SubmissionService {
@@ -20,5 +22,9 @@ export class SubmissionService {
 
   createSubmission(submissionRequest: SubmissionRequest): Observable<any> {
     return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}`, submissionRequest);
+  }
+
+  postComment(request: CommentRequest): Observable<CommentResponse> {
+    return this.httpClient.post<CommentResponse>(`${this.config.getApiEndpoint()}/comment`, request);
   }
 }
