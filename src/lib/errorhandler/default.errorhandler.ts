@@ -12,7 +12,7 @@ export class DefaultErrorhandler implements ErrorHandler {
 
   handleError(error): void {
     if (error instanceof HttpErrorResponse && error.url.includes(this.config.getApiEndpoint())) {
-      this.notificationService.error('Ошибка!', error.error.error);
+      this.notificationService.error('Ошибка!', error.error);
     }
     if (!environment.production) {
       throw error;

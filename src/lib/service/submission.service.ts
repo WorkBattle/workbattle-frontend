@@ -28,11 +28,11 @@ export class SubmissionService {
     return this.httpClient.post<CommentResponse>(`${this.config.getApiEndpoint()}/comment`, request);
   }
 
-  putLike(submissionUuid: string): Observable<any> {
-    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/likes`, {});
+  putLike(request: any, submissionUuid: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/likes`, request);
   }
 
-  putDislike(submissionUuid: string): Observable<any> {
-    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/dislikes`, {});
+  putDislike(request: any, submissionUuid: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/dislikes`, request);
   }
 }
