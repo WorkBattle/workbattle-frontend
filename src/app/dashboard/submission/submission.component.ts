@@ -24,6 +24,7 @@ export class SubmissionComponent implements OnInit {
   submissionInit: boolean;
   submissionDetails: SubmissionDetailsResponse;
   fileList: Array<NzUploadFile> = [];
+  isCurrentUserNotSubmissionOwner: boolean;
   canPostComment = true;
   maxSizeExceeded = false;
 
@@ -71,6 +72,36 @@ export class SubmissionComponent implements OnInit {
     }
   }
 
+  onPutLike(): void {
+    if (this.isCurrentUserNotSubmissionOwner) {
+      this.submissionService
+        .putLike(this.submissionDetails.submission.uuid)
+        .subscribe(() => {
+          if (this.submissionDetails.submission.disliked) {
+            this.submissionDetails.submission.likes += 1;
+            this.submissionDetails.submission.dislikes -= 1;
+          } else {
+            this.submissionDetails.submission.likes += 1;
+          }
+        });
+    }
+  }
+
+  onPutDislike(): void {
+    if (this.isCurrentUserNotSubmissionOwner) {
+      this.submissionService
+        .putDislike(this.submissionDetails.submission.uuid)
+        .subscribe(() => {
+          if (this.submissionDetails.submission.liked) {
+            this.submissionDetails.submission.likes -= 1;
+            this.submissionDetails.submission.dislikes += 1;
+          } else {
+            this.submissionDetails.submission.dislikes += 1;
+          }
+        });
+    }
+  }
+
   getFilesSize(): number {
     let filesSize = 0;
     this.fileList.forEach((file) => {
@@ -91,6 +122,8 @@ export class SubmissionComponent implements OnInit {
         )
         .subscribe((response) => {
           this.submissionInit = true;
+          this.isCurrentUserNotSubmissionOwner =
+            response.submission.user.uuid !== this.userService.userInfo.uuid;
           this.submissionDetails = response;
         });
     });

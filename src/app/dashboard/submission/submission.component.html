@@ -54,11 +54,12 @@
       </ng-container>
       <h3 class="wb-cabinet-body__about-headline">Голосование</h3>
       <div class="we-submission-info__voting">
-        <div class="wb-submission-info__voting-points">
-          <div class="wb-submission-info__voting-point wb-submission-info__voting--likes">
+        <div class="wb-submission-info__voting-points"
+             [ngClass]="{'wb-submission-info__voting-points--interactive': isCurrentUserNotSubmissionOwner}">
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--likes" (click)="onPutLike()">
             {{submissionDetails.submission.likes}}
           </div>
-          <div class="wb-submission-info__voting-point wb-submission-info__voting--dislikes">
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--dislikes" (click)="onPutDislike()">
             {{submissionDetails.submission.dislikes}}
           </div>
         </div>

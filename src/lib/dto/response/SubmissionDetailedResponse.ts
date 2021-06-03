@@ -11,4 +11,5 @@ export class SubmissionDetailedResponse {
   likes: number;
   dislikes: number;
   liked: boolean;
+  disliked: boolean;
 }

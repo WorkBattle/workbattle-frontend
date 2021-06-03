@@ -5,7 +5,10 @@
       &nbsp;
       <i *ngIf="!contestListInit" nz-icon nzType="loading" nzTheme="outline"></i>
     </h3>
-    <app-personal-area-contest *ngFor="let contest of contestList" [contest]="contest"></app-personal-area-contest>
+    <ng-container *ngFor="let contest of contestList">
+      <app-personal-area-contest [contest]="contest" *ngIf="listOfChosenContestTypes.includes(contest.contestType)">
+      </app-personal-area-contest>
+    </ng-container>
   </div>
   <div class="wb-cabinet-body__about">
     <button class="wb-button wb-button--filled wb-button--create-contest" (click)="onCreateContestClick()">
@@ -22,6 +25,16 @@
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
       </p>
+      <nz-select
+        nzMode="multiple"
+        nzPlaceHolder="Фильтр списка контестов"
+        class="wb-cabinet-body__contest-types"
+        [(ngModel)]="listOfChosenContestTypes">
+        <nz-option nzLabel="Дизайн" [nzValue]="contestTypeEnum.DESIGN"></nz-option>
+        <nz-option nzLabel="Программирование" [nzValue]="contestTypeEnum.PROGRAMMING"></nz-option>
+        <nz-option nzLabel="Копирайтинг" [nzValue]="contestTypeEnum.WRITING"></nz-option>
+        <nz-option nzLabel="Видео и анимация" [nzValue]="contestTypeEnum.VIDEO"></nz-option>
+      </nz-select>
     </div>
   </div>
 </section>

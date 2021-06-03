@@ -27,4 +27,12 @@ export class SubmissionService {
   postComment(request: CommentRequest): Observable<CommentResponse> {
     return this.httpClient.post<CommentResponse>(`${this.config.getApiEndpoint()}/comment`, request);
   }
+
+  putLike(submissionUuid: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/likes`, {});
+  }
+
+  putDislike(submissionUuid: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.config.getApiEndpoint()}/${this.apiUrl}/${submissionUuid}/dislikes`, {});
+  }
 }

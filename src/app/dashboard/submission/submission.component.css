@@ -56,6 +56,10 @@
   position: relative;
 }
 
+.wb-submission-info__voting-points--interactive {
+  cursor: pointer;
+}
+
 .wb-submission-info__voting-point--active {
   color: var(--wb-action-color);
 }
