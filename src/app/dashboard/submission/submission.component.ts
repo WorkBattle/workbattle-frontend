@@ -74,31 +74,59 @@ export class SubmissionComponent implements OnInit {
 
   onPutLike(): void {
     if (this.isCurrentUserNotSubmissionOwner) {
-      this.submissionService
-        .putLike(this.submissionDetails.submission.uuid)
-        .subscribe(() => {
-          if (this.submissionDetails.submission.disliked) {
+      if (this.submissionDetails.submission.liked) {
+        this.submissionService
+          .putLike({ delete: true }, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
+            this.submissionDetails.submission.likes -= 1;
+            this.submissionDetails.submission.liked = false;
+          });
+      } else if (this.submissionDetails.submission.disliked) {
+        this.submissionService
+          .putLike({}, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
             this.submissionDetails.submission.likes += 1;
             this.submissionDetails.submission.dislikes -= 1;
-          } else {
+            this.submissionDetails.submission.liked = true;
+            this.submissionDetails.submission.disliked = false;
+          });
+      } else {
+        this.submissionService
+          .putLike({}, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
             this.submissionDetails.submission.likes += 1;
-          }
-        });
+            this.submissionDetails.submission.liked = true;
+          });
+      }
     }
   }
 
   onPutDislike(): void {
     if (this.isCurrentUserNotSubmissionOwner) {
-      this.submissionService
-        .putDislike(this.submissionDetails.submission.uuid)
-        .subscribe(() => {
-          if (this.submissionDetails.submission.liked) {
+      if (this.submissionDetails.submission.liked) {
+        this.submissionService
+          .putDislike({}, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
             this.submissionDetails.submission.likes -= 1;
             this.submissionDetails.submission.dislikes += 1;
-          } else {
+            this.submissionDetails.submission.liked = false;
+            this.submissionDetails.submission.disliked = true;
+          });
+      } else if (this.submissionDetails.submission.disliked) {
+        this.submissionService
+          .putDislike({delete: true}, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
+            this.submissionDetails.submission.dislikes -= 1;
+            this.submissionDetails.submission.disliked = false;
+          });
+      } else {
+        this.submissionService
+          .putDislike({}, this.submissionDetails.submission.uuid)
+          .subscribe(() => {
             this.submissionDetails.submission.dislikes += 1;
-          }
-        });
+            this.submissionDetails.submission.disliked = true;
+          });
+      }
     }
   }
 

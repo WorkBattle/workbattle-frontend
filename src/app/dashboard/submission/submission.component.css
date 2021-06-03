@@ -56,6 +56,10 @@
   position: relative;
 }
 
+.wb-submission-info__voting-point--active {
+  filter: hue-rotate(90deg) invert(1) brightness(0.75);
+}
+
 .wb-submission-info__voting-points--interactive {
   cursor: pointer;
 }

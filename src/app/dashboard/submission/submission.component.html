@@ -56,10 +56,14 @@
       <div class="we-submission-info__voting">
         <div class="wb-submission-info__voting-points"
              [ngClass]="{'wb-submission-info__voting-points--interactive': isCurrentUserNotSubmissionOwner}">
-          <div class="wb-submission-info__voting-point wb-submission-info__voting--likes" (click)="onPutLike()">
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--likes"
+               [ngClass]="{'wb-submission-info__voting-point--active': submissionDetails.submission.liked}"
+               (click)="onPutLike()">
             {{submissionDetails.submission.likes}}
           </div>
-          <div class="wb-submission-info__voting-point wb-submission-info__voting--dislikes" (click)="onPutDislike()">
+          <div class="wb-submission-info__voting-point wb-submission-info__voting--dislikes"
+               [ngClass]="{'wb-submission-info__voting-point--active': submissionDetails.submission.disliked}"
+               (click)="onPutDislike()">
             {{submissionDetails.submission.dislikes}}
           </div>
         </div>
